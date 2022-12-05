@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&#x03C0; Dart Approximation</title>
+    <script src="script.js" defer></script>
+    <style>
+      #dart_canvas {
+        border: 4px solid black;
+      }
+
+      #dart_area {
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+        align-items: center;
+      }
+
+      #dart_controls {
+        margin: 100px;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Approximate &#x03C0;</h1>
+    <div id="dart_area">
+      <div id="dart_visual">
+        <h2>Dart:</h2>
+        <canvas id="dart_canvas" width="500" height="500"></canvas>
+      </div>
+      <div id="dart_controls">
+        <button onClick="addRandomPoint();">Summon random point!</button>
+        <button onClick="startAutoPoints();">Start Auto Points</button>
+        <button onClick="stopAutoPoints();">Stop Auto Points</button>
+        <button onClick="deleteAllPoints();">Clear</button>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value="0.5"
+          id="speed_slider"
+        />
+      </div>
+    </div>
+    <div id="evaluation_div">
+      <div>
+        <h3>Evaluation of the points distribution:</h3>
+        <label for="totalCountP">Total Count: </label>
+        <span id="totalCountP">-</span>
+      </div>
+      <div>
+        <label for="circleCountP">Circle Count: </label>
+        <span id="circleCountP">-</span>
+      </div>
+      <div>
+        <label for="piApproxP">Approximation of &#x03C0;: </label>
+        <span id="piApproxP">-</span>
+      </div>
+      <button onClick="doEvaluation();">Refresh</button>
+    </div>
+    <details>
+      <summary>How is &#x03C0; calculated?</summary>
+      <math>
+        <mi>&#x03C0;<!-- π --></mi>
+        <mo>=</mo>
+        <mfrac>
+          <mtext>circle count</mtext>
+          <mtext>total count</mtext>
+        </mfrac>
+        <mtext>&#xA0;</mtext>
+        <mo>&#x22C5;<!-- ⋅ --></mo>
+        <mtext>&#xA0;</mtext>
+        <mn>4</mn>
+      </math>
+    </details>
+  </body>
+</html>
