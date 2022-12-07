@@ -37,8 +37,10 @@ let piApprox = 0;
 const draw = () => {
   ctx.fillStyle = "rgb(0, 0, 0)";
   ctx.lineWidth = "4";
+  ctx.fillStyle = "rgb(211,211,211)"
   ctx.beginPath();
   ctx.arc(250, 250, 250, 0, Math.PI * 2, true);
+  ctx.fill();
   ctx.stroke();
 };
 
@@ -136,7 +138,12 @@ slider.addEventListener("change", (e) => {
 addPointBtn.addEventListener("click", addRandomPoint);
 startAutoPointsBtn.addEventListener("click", startAutoPoints);
 stopAutoPointsBtn.addEventListener("click", stopAutoPoints);
-deleteAllPointsBtn.addEventListener("click", deleteAllPoints);
+deleteAllPointsBtn.addEventListener("click", () => {
+  const result = confirm(
+    "Do you really want to reset the simulation?\nEvery dart will be deleted!"
+  );
+  if (result) deleteAllPoints();
+});
 
 // ** onload execution **
 draw();

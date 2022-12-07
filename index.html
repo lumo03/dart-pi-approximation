@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&#x03C0; Dart Approximation</title>
+    <title>&#x03C0; π Dart Approximation</title>
     <script src="script.js" defer></script>
     <style>
       #dart_canvas {
@@ -26,51 +26,78 @@
         justify-items: center;
         align-items: center;
       }
+
+      #speed_input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #speed_input > span {
+        font-size: small;
+      }
+
+      td {
+        padding: 8px;
+      }
+
+      .result_td {
+        text-align: left;
+      }
     </style>
   </head>
   <body>
-    <h1>Approximate &#x03C0;</h1>
+    <h1>Approximate &#x03C0; using the Dartboard model</h1>
     <div id="dart_area">
       <div id="dart_visual">
-        <h2>Dart:</h2>
+        <h2>Dartboard:</h2>
         <canvas id="dart_canvas" width="500" height="500"></canvas>
       </div>
       <div id="dart_controls">
-        <button id="add_point_btn">Summon random point!</button>
-        <button id="start_auto_points_btn">Start Auto Points</button>
-        <button id="stop_auto_points_btn">Stop Auto Points</button>
-        <button id="delete_all_points_btn">Clear</button>
-        <input
-          type="range"
-          min="0"
-          max="1"
-          step="0.1"
-          value="0.5"
-          id="speed_slider"
-        />
+        <button id="add_point_btn">Shoot a dart</button>
+        <button id="start_auto_points_btn">Start Auto Shooting</button>
+        <button id="stop_auto_points_btn">Stop Auto Shooting</button>
+        <label for="speed_slider">Speed: </label>
+        <div id="speed_input">
+          <span>0.1</span>
+          <input
+            type="range"
+            min="0.1"
+            max="1"
+            step="0.1"
+            value="0.5"
+            id="speed_slider"
+          />
+          <span>1</span>
+        </div>
+        <button id="delete_all_points_btn">Reset Simulation</button>
       </div>
     </div>
     <div id="evaluation_div">
-      <div>
-        <h3>Evaluation of the points distribution:</h3>
-        <label for="totalCountP">Total Count: </label>
-        <span id="totalCountP">-</span>
-      </div>
-      <div>
-        <label for="circleCountP">Circle Count: </label>
-        <span id="circleCountP">-</span>
-      </div>
-      <div>
-        <label for="piApproxP">Approximation of &#x03C0;: </label>
-        <span id="piApproxP">-</span>
-      </div>
-      <button onClick="doEvaluation();">Refresh</button>
+      <h3>Evaluation of the darts distribution:</h3>
+      <table>
+        <tr>
+          <td>
+            <label for="totalCountP">Number of Darts (Total Count): </label>
+          </td>
+          <td class="result_td"><span id="totalCountP">-</span></td>
+        </tr>
+        <tr>
+          <td><label for="circleCountP">Hits (Circle Count): </label></td>
+          <td class="result_td"><span id="circleCountP">-</span></td>
+        </tr>
+        <tr>
+          <td><label for="piApproxP">Approximation of &#x03C0;: </label></td>
+          <td class="result_td"><span id="piApproxP">-</span></td>
+        </tr>
+      </table>
+      <button onClick="doEvaluation();">Refresh Calculations</button>
     </div>
     <details>
       <summary>How is &#x03C0; calculated?</summary>
       <math>
         <mi>&#x03C0;<!-- π --></mi>
-        <mo>=</mo>
+        <mo>≈</mo>
         <mfrac>
           <mtext>circle count</mtext>
           <mtext>total count</mtext>
